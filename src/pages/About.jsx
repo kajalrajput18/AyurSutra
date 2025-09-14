@@ -3,14 +3,14 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 py-12 px-6">
+    <div className="min-h-screen py-12 px-6">
       <div className="max-w-6xl mx-auto space-y-16">
         {/* Hero Section */}
-        <section className="text-center">
+        <section className="text-center ">
           <h1 className="text-4xl font-bold text-green-700 mb-4">
             About AyurSutra
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-white max-w-3xl mx-auto">
             AyurSutra is a modern platform that blends the **ancient wisdom of
             Ayurveda** with **cutting-edge technology**. We simplify Panchakarma
             treatment scheduling, patient management, and therapy tracking while
@@ -24,14 +24,14 @@ const About = () => {
             <h2 className="text-2xl font-semibold text-green-700 mb-4">
               Our Mission
             </h2>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-white leading-relaxed">
               To make Ayurvedic therapies accessible, efficient, and reliable by
               building a **digital-first Panchakarma management system**. We
               empower doctors, clinics, and patients with tools for better
               scheduling, treatment consistency, and real-time progress
               tracking.
             </p>
-            <ul className="mt-6 space-y-2 text-gray-700">
+            <ul className="mt-6 space-y-2 text-white">
               <li>✅ Authentic Ayurvedic treatment plans</li>
               <li>✅ AI-powered Dosha prediction & therapy suggestions</li>
               <li>✅ End-to-end patient & doctor therapy tracking</li>
@@ -47,7 +47,7 @@ const About = () => {
         </section>
 
         {/* Why Choose Us */}
-        <section className="bg-white p-8 rounded-2xl shadow-lg">
+        <section className="p-8 rounded-2xl shadow-lg">
           <h2 className="text-2xl font-semibold text-green-700 text-center mb-6">
             Why Choose AyurSutra?
           </h2>
@@ -56,7 +56,7 @@ const About = () => {
               <h3 className="font-bold text-lg text-green-600 mb-2">
                 🌿 Traditional + Modern
               </h3>
-              <p className="text-gray-600">
+              <p className="text-white">
                 We combine classical Ayurvedic principles with AI-driven
                 technology for effective treatments.
               </p>
@@ -65,7 +65,7 @@ const About = () => {
               <h3 className="font-bold text-lg text-green-600 mb-2">
                 ⏱ Seamless Scheduling
               </h3>
-              <p className="text-gray-600">
+              <p className="text-white">
                 Automated scheduling and notifications ensure no session is
                 missed.
               </p>
@@ -74,7 +74,7 @@ const About = () => {
               <h3 className="font-bold text-lg text-green-600 mb-2">
                 📊 Real-time Tracking
               </h3>
-              <p className="text-gray-600">
+              <p className="text-white">
                 Patients and doctors can monitor therapy progress, feedback, and
                 outcomes at every step.
               </p>

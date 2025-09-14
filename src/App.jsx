@@ -1,6 +1,5 @@
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import "./App.css";
 // Import Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -19,9 +18,9 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen bg-[#242424]">
         {/* Header/Navbar - optional */}
-         <Navbar />
+        <Navbar />
 
         {/* Main Content */}
         <main className="flex-grow">

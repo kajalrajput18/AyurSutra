@@ -1,5 +1,5 @@
 // src/pages/Home.jsx
-import React from "react";
+
 import { Link } from "react-router-dom";
 import { FaBrain, FaUserMd, FaSpa, FaHeartbeat } from "react-icons/fa";
 
@@ -7,15 +7,15 @@ const Home = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-400 to-teal-500 text-white py-20 px-6 md:px-20 text-center md:text-left">
+      <section className="bg-gradient-to-r from-green-600 to-green-700 text-white py-20 px-6 md:px-20 text-center md:text-left">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold">
               AyurSutra 🌿 <br /> Personalized Ayurveda with AI
             </h1>
             <p className="text-lg text-gray-100">
-              Discover your unique dosha balance, get AI-driven Ayurvedic insights,
-              and connect with trusted Ayurveda doctors.
+              Discover your unique dosha balance, get AI-driven Ayurvedic
+              insights, and connect with trusted Ayurveda doctors.
             </p>
             <Link
               to="/dashboard"
@@ -35,8 +35,8 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-6 md:px-20 bg-gray-50">
-        <h2 className="text-3xl font-bold text-center mb-12">
+      <section className="py-16 px-6 md:px-20 ">
+        <h2 className="text-3xl font-bold text-center mb-12 text-white">
           Why Choose <span className="text-green-600">AyurSutra?</span>
         </h2>
 
@@ -53,7 +53,8 @@ const Home = () => {
             <FaHeartbeat className="text-red-500 text-4xl mx-auto mb-4" />
             <h3 className="text-xl font-semibold">Personalized Therapy</h3>
             <p className="text-gray-600 text-sm mt-2">
-              Get lifestyle, yoga, and herbal therapy recommendations tailored to you.
+              Get lifestyle, yoga, and herbal therapy recommendations tailored
+              to you.
             </p>
           </div>
 
@@ -69,21 +70,23 @@ const Home = () => {
             <FaSpa className="text-purple-500 text-4xl mx-auto mb-4" />
             <h3 className="text-xl font-semibold">Holistic Wellness</h3>
             <p className="text-gray-600 text-sm mt-2">
-              Experience Ayurveda’s power in daily health, stress relief, and balance.
+              Experience Ayurveda’s power in daily health, stress relief, and
+              balance.
             </p>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-6 md:px-20 text-center bg-gradient-to-r from-teal-500 to-green-400 text-white">
+      <section className="py-16 px-6 md:px-20 text-center bg-gradient-to-r from-green-600 to-green-700 text-white">
         <h2 className="text-3xl font-bold mb-4">Begin Your Wellness Journey</h2>
         <p className="text-lg mb-6">
-          Join AyurSutra today and let AI-powered Ayurveda transform your health.
+          Join AyurSutra today and let AI-powered Ayurveda transform your
+          health.
         </p>
         <Link
           to="/dashboard"
-          className="bg-white text-teal-600 px-6 py-3 rounded-full font-semibold shadow-md hover:bg-gray-100 transition"
+          className="bg-white text-green-600 px-6 py-3 rounded-full font-semibold shadow-md hover:bg-gray-100 transition"
         >
           Explore Dashboard
         </Link>
