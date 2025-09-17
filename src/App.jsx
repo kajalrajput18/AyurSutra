@@ -13,7 +13,7 @@ import DoctorDashboard from "./components/DoctorDashboard";
 import Navbar from "./components/Navbar";
 // Layout Components
 import Footer from "./components/Footer";
-// (You can also create a Navbar/Header component and import it here)
+import AyurvedicChatbot from "./components/AyurvedicChatbot";
 
 function App() {
   return (
@@ -34,6 +34,7 @@ function App() {
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/feedback" element={<FeedbackForm />} />
             <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+            <Route path="/ai" element={<AyurvedicChatbot />} />
           </Routes>
         </main>
 

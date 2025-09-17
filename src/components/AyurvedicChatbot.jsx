@@ -1,9 +1,6 @@
-import { Link } from "react-router-dom";
-import { FaBrain, FaUserMd, FaSpa, FaHeartbeat, FaTimes } from "react-icons/fa";
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
-const Home = () => {
-  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+const AyurvedicChatbot = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -13,6 +10,7 @@ const Home = () => {
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
 
@@ -129,32 +127,56 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col">
-      {/* Full Screen Chatbot Overlay */}
-      {isChatbotOpen && (
-        <div className="fixed inset-0 z-50 bg-white flex flex-col">
+    <div className="fixed bottom-6 right-6 z-50">
+      {/* Chatbot Toggle Button */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110"
+        >
+          <div className="flex items-center justify-center w-12 h-12">
+            <span className="text-2xl">🌿</span>
+          </div>
+        </button>
+      )}
+
+      {/* Chatbot Window */}
+      {isOpen && (
+        <div className="bg-white rounded-2xl shadow-2xl w-96 h-96 flex flex-col border border-green-200">
           {/* Header */}
-          <div className="bg-green-600 text-white p-6 flex justify-between items-center shadow-md">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                <span className="text-2xl">🌿</span>
+          <div className="bg-green-600 text-white p-4 rounded-t-2xl flex justify-between items-center">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                <span className="text-xl">🌿</span>
               </div>
               <div>
-                <h1 className="text-2xl font-bold">Ayurvedic Assistant</h1>
-                <p className="text-green-100">Ask me anything about Ayurveda</p>
+                <h3 className="font-semibold">Ayurvedic Assistant</h3>
+                <p className="text-green-100 text-xs">Online - Ready to help</p>
               </div>
             </div>
             <button
-              onClick={() => setIsChatbotOpen(false)}
-              className="text-white hover:text-green-200 transition-colors p-2 rounded-full hover:bg-green-700"
+              onClick={() => setIsOpen(false)}
+              className="text-white hover:text-green-200 transition-colors"
             >
-              <FaTimes className="w-6 h-6 cursor-pointer" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
             </button>
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 p-6 overflow-y-auto bg-[#1a1a1aa8]">
-            <div className="max-w-4xl mx-auto space-y-4">
+          <div className="flex-1 p-4 overflow-y-auto bg-green-50">
+            <div className="space-y-3">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -163,17 +185,17 @@ const Home = () => {
                   }`}
                 >
                   <div
-                    className={`max-w-2xl p-4 rounded-2xl ${
+                    className={`max-w-xs p-3 rounded-2xl ${
                       message.sender === "user"
                         ? "bg-green-500 text-white rounded-br-none"
                         : "bg-white text-gray-800 border border-green-200 rounded-bl-none"
                     }`}
                   >
-                    <p className="text-lg whitespace-pre-line">
+                    <p className="text-sm whitespace-pre-line">
                       {message.text}
                     </p>
                     <p
-                      className={`text-xs mt-2 ${
+                      className={`text-xs mt-1 ${
                         message.sender === "user"
                           ? "text-green-100"
                           : "text-gray-500"
@@ -189,15 +211,15 @@ const Home = () => {
               ))}
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-white border border-green-200 p-4 rounded-2xl rounded-bl-none">
-                    <div className="flex space-x-2">
-                      <div className="w-3 h-3 bg-green-400 rounded-full animate-bounce"></div>
+                  <div className="bg-white border border-green-200 p-3 rounded-2xl rounded-bl-none">
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-bounce"></div>
                       <div
-                        className="w-3 h-3 bg-green-400 rounded-full animate-bounce"
+                        className="w-2 h-2 bg-green-400 rounded-full animate-bounce"
                         style={{ animationDelay: "0.2s" }}
                       ></div>
                       <div
-                        className="w-3 h-3 bg-green-400 rounded-full animate-bounce"
+                        className="w-2 h-2 bg-green-400 rounded-full animate-bounce"
                         style={{ animationDelay: "0.4s" }}
                       ></div>
                     </div>
@@ -210,16 +232,14 @@ const Home = () => {
 
           {/* Quick Questions */}
           {messages.length <= 1 && (
-            <div className="px-6 py-4 bg-green-100 border-t border-green-200">
-              <p className="text-sm text-green-800 mb-3 font-medium">
-                Try asking:
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {commonAyurvedicQuestions.map((question, index) => (
+            <div className="px-4 py-2 bg-green-100">
+              <p className="text-xs text-green-800 mb-2">Try asking:</p>
+              <div className="flex flex-wrap gap-2">
+                {commonAyurvedicQuestions.slice(0, 3).map((question, index) => (
                   <button
                     key={index}
                     onClick={() => handleQuickQuestionClick(question)}
-                    className="bg-white text-green-700 px-4 py-2 rounded-full border border-green-300 hover:bg-green-50 transition-colors text-sm"
+                    className="text-xs bg-white text-green-700 px-3 py-1 rounded-full border border-green-300 hover:bg-green-50 transition-colors"
                   >
                     {question}
                   </button>
@@ -229,24 +249,23 @@ const Home = () => {
           )}
 
           {/* Input Area */}
-          <div className="p-6 border-t border-green-200 bg-white">
-            <div className="max-w-4xl mx-auto flex space-x-4">
+          <div className="p-4 border-t border-green-200 bg-white rounded-b-2xl">
+            <div className="flex space-x-2">
               <input
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask about Ayurveda..."
-                className="flex-1 px-6 py-4 border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400 text-lg"
-                autoFocus
+                className="flex-1 px-4 py-2 border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-400 text-sm"
               />
               <button
                 onClick={handleSendMessage}
                 disabled={inputMessage.trim() === ""}
-                className="bg-green-600 hover:bg-green-700 disabled:bg-green-300 text-white p-4 rounded-full transition-colors flex items-center justify-center"
+                className="bg-green-600 hover:bg-green-700 disabled:bg-green-300 text-white p-2 rounded-full transition-colors"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -263,94 +282,8 @@ const Home = () => {
           </div>
         </div>
       )}
-
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-600 to-green-700 text-white py-20 px-6 md:px-20 text-center md:text-left">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold">
-              AyurSutra 🌿 <br /> Personalized Ayurveda with AI
-            </h1>
-            <p className="text-lg text-gray-100">
-              Discover your unique dosha balance, get AI-driven Ayurvedic
-              insights, and connect with trusted Ayurveda doctors.
-            </p>
-            <button
-              onClick={() => setIsChatbotOpen(true)}
-              className="bg-white text-green-600 px-6 py-3 rounded-full font-semibold shadow-md hover:bg-gray-100 transition cursor-pointer"
-            >
-              Get Started
-            </button>
-          </div>
-          <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
-            <img
-              src="src/assets/ayurved.png"
-              alt="Ayurveda Illustration"
-              className="w-72 md:w-96"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 px-6 md:px-20 ">
-        <h2 className="text-3xl font-bold text-center mb-12 text-white">
-          Why Choose <span className="text-green-600">AyurSutra?</span>
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition">
-            <FaBrain className="text-green-500 text-4xl mx-auto mb-4" />
-            <h3 className="text-xl font-semibold">AI Dosha Prediction</h3>
-            <p className="text-gray-600 text-sm mt-2">
-              Analyze your body-mind type with AI for accurate dosha insights.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition">
-            <FaHeartbeat className="text-red-500 text-4xl mx-auto mb-4" />
-            <h3 className="text-xl font-semibold">Personalized Therapy</h3>
-            <p className="text-gray-600 text-sm mt-2">
-              Get lifestyle, yoga, and herbal therapy recommendations tailored
-              to you.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition">
-            <FaUserMd className="text-blue-500 text-4xl mx-auto mb-4" />
-            <h3 className="text-xl font-semibold">Doctor Consultation</h3>
-            <p className="text-gray-600 text-sm mt-2">
-              Connect with certified Ayurveda doctors for expert guidance.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 rounded-2xl shadow-md text-center hover:shadow-lg transition">
-            <FaSpa className="text-purple-500 text-4xl mx-auto mb-4" />
-            <h3 className="text-xl font-semibold">Holistic Wellness</h3>
-            <p className="text-gray-600 text-sm mt-2">
-              Experience Ayurveda's power in daily health, stress relief, and
-              balance.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 px-6 md:px-20 text-center bg-gradient-to-r from-green-600 to-green-700 text-white">
-        <h2 className="text-3xl font-bold mb-4">Begin Your Wellness Journey</h2>
-        <p className="text-lg mb-6">
-          Join AyurSutra today and let AI-powered Ayurveda transform your
-          health.
-        </p>
-        <Link
-          to="/doctor-dashboard"
-          className="bg-white text-green-600 px-6 py-3 rounded-full font-semibold shadow-md hover:bg-gray-100 transition"
-        >
-          Explore Dashboard
-        </Link>
-      </section>
     </div>
   );
 };
 
-export default Home;
+export default AyurvedicChatbot;

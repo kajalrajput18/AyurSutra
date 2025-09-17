@@ -1,22 +1,52 @@
 import React from "react";
 import { Calendar, ClipboardList, User, MessageSquare } from "lucide-react";
 
-const DoctorDashboard= () => {
+const DoctorDashboard = () => {
   // Dummy data (replace with API later)
   const patients = [
-    { id: 1, name: "Rahul Sharma", therapy: "Vamana", nextSession: "15 Sep, 10:00 AM" },
-    { id: 2, name: "Priya Singh", therapy: "Basti", nextSession: "16 Sep, 11:30 AM" },
-    { id: 3, name: "Amit Patel", therapy: "Nasya", nextSession: "17 Sep, 9:00 AM" },
+    {
+      id: 1,
+      name: "Rahul Sharma",
+      therapy: "Vamana",
+      nextSession: "15 Sep, 10:00 AM",
+    },
+    {
+      id: 2,
+      name: "Priya Singh",
+      therapy: "Basti",
+      nextSession: "16 Sep, 11:30 AM",
+    },
+    {
+      id: 3,
+      name: "Amit Patel",
+      therapy: "Nasya",
+      nextSession: "17 Sep, 9:00 AM",
+    },
   ];
 
   const feedbacks = [
-    { id: 1, patient: "Rahul Sharma", rating: 4, comment: "Felt lighter and relaxed." },
-    { id: 2, patient: "Priya Singh", rating: 5, comment: "Huge improvement in digestion." },
-    { id: 3, patient: "Amit Patel", rating: 3, comment: "Mild headache after session." },
+    {
+      id: 1,
+      patient: "Rahul Sharma",
+      rating: 4,
+      comment: "Felt lighter and relaxed.",
+    },
+    {
+      id: 2,
+      patient: "Priya Singh",
+      rating: 5,
+      comment: "Huge improvement in digestion.",
+    },
+    {
+      id: 3,
+      patient: "Amit Patel",
+      rating: 3,
+      comment: "Mild headache after session.",
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6">
+    <div className="min-h-screen bg-[#1a1a1aa8] p-6">
       {/* Heading */}
       <h1 className="text-3xl font-bold text-green-800 mb-6 flex items-center gap-2">
         <ClipboardList className="w-7 h-7 text-green-600" />
@@ -24,7 +54,6 @@ const DoctorDashboard= () => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
         {/* Patients List */}
         <div className="bg-white rounded-2xl shadow-md p-5">
           <h2 className="text-xl font-semibold text-green-700 flex items-center gap-2 mb-3">
@@ -32,7 +61,10 @@ const DoctorDashboard= () => {
           </h2>
           <ul className="space-y-3">
             {patients.map((p) => (
-              <li key={p.id} className="p-3 bg-green-50 rounded-lg border flex justify-between">
+              <li
+                key={p.id}
+                className="p-3 bg-green-50 rounded-lg border flex justify-between"
+              >
                 <div>
                   <p className="font-medium text-gray-800">{p.name}</p>
                   <p className="text-sm text-gray-600">{p.therapy} Therapy</p>

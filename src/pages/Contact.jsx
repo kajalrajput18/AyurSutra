@@ -19,7 +19,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-100 via-white to-green-50 py-12 px-6">
+    <div className="min-h-screen bg-[#1a1a1aa8] py-12 px-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Contact Form */}
         <div className="bg-white p-8 rounded-2xl shadow-lg">
